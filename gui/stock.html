@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stock Predictor</title>
+</head>
+<body>
+  <h1>Stock Prediction</h1>
+  <form id="stockForm">
+    <label for="symbol">Enter Stock Symbol:</label>
+    <input type="text" id="symbol" name="symbol" required>
+    <button type="submit">Get Prediction</button>
+  </form>
+  <pre id="result"></pre>
+
+  <script>
+    document.getElementById("stockForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const symbol = document.getElementById("symbol").value;
+
+      fetch("/predict", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ symbol })
+      })
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("result").textContent = JSON.stringify(data, null, 2);
+      });
+    });
+  </script>
+</body>
+</html>
