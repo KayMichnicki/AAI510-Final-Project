@@ -10,23 +10,39 @@
     <input type="text" id="symbol" name="symbol" required>
     <button type="submit">Get Prediction</button>
   </form>
+
+  <h2>Prediction Result:</h2>
   <pre id="result"></pre>
 
   <script>
     document.getElementById("stockForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const symbol = document.getElementById("symbol").value;
+      e.preventDefault(); // Prevent default form submission
 
-      fetch("/predict", {
+      const symbol = document.getElementById("symbol").value.trim();
+
+      if (!symbol) {
+        alert("Please enter a valid stock symbol.");
+        return;
+      }
+
+      fetch("/api/predict", {  // <-- adjust path based on your NGINX reverse proxy config
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({ symbol })
       })
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Network response was not OK");
+        }
+        return response.json();
+      })
       .then(data => {
         document.getElementById("result").textContent = JSON.stringify(data, null, 2);
+      })
+      .catch(error => {
+        document.getElementById("result").textContent = "Error: " + error.message;
       });
     });
   </script>
