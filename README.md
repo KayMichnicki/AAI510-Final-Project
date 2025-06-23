@@ -15,23 +15,11 @@ In this project, we utilize the S&P 500 stock dataset from Kaggle, which contain
 🎯 Business Objective
 The objective of this project is to apply machine learning techniques to historical S&P 500 stock data. We aim to build two core models:
 
-- Stock Price Prediction
-Forecast future price movements to provide insights into market trends and investment opportunities.
-
 - Stock Clustering Using Financial Indicators
-Use KMeans clustering to group companies based on financial features like:
+Perform an Clustering of companies based on key financial indicators, with the goal of identifying distinct groups or market player types that exhibit similar behavior across features such as trading volume, stock price, market capitalization, EBITDA, revenue growth, and portfolio weight. We will be using K Means clustering to implement this unsupervised learning.
 
-    - Trading Volume
+- Develop a predictive model that classifies whether a stock is likely to outperform the market over the next 20 days, based on technical and fundamental indicators.
 
-    - Stock Price
-
-    - Market Capitalization
-
-    - EBITDA
-
-    - Revenue Growth
-
-    - Portfolio Weight This enables identifying similar stock behavior, aiding portfolio diversification and strategy formation.
 
 📦 Project Dependencies
 Python Libraries
