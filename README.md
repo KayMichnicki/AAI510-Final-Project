@@ -6,9 +6,9 @@
 
 In this project, we utilize the S&P 500 stock dataset from Kaggle, which contains historical price data for companies listed in the S&P 500 index. The dataset includes key financial metrics such as open, close, high, low, volume, and adjusted close prices, covering multiple stocks across different sectors. This rich financial dataset allows us to:
 
-- Build predictive models for stock price forecasting.
-
 - Apply clustering techniques to identify behavioral patterns and group similar stocks based on their historical characteristics.
+- 
+- Build predictive models for stock performance classification.
 
 
 
